@@ -1,0 +1,16 @@
+net: "models/vgg16/VGG_19_layers_prelu_train.prototxt"
+test_iter: 1000
+test_interval: 4000
+test_initialization: false
+display: 40
+average_loss: 40
+base_lr: 0.01
+lr_policy: "step"
+stepsize: 120000
+gamma: 0.94
+max_iter: 10000000
+momentum: 0.9
+weight_decay: 0.0001
+snapshot: 40000
+snapshot_prefix: "models/vgg16/VGG19_layers_prelu"
+solver_mode: GPU
