@@ -19,7 +19,7 @@ layer {
     mirror: true
  }
  data_param {
-    source: "pth/to/train_lmdb"
+    source: "path/to/train_lmdb"
     batch_size: 64
     backend: LMDB
   }
@@ -112,6 +112,33 @@ layer {
   }
 }
 layer {
+  name: "bn1_scale"
+  type: "Scale"
+  bottom: "bn1"
+  top: "bn1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
+  }
+}
+layer {
   bottom: "bn1"
   top: "bn1"
   name: "prelu1_1"
@@ -189,6 +216,33 @@ layer {
   }
   include {
     phase: TEST
+  }
+}
+layer {
+  name: "bn2_scale"
+  type: "Scale"
+  bottom: "bn2"
+  top: "bn2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
   }
 }
 layer {
@@ -283,6 +337,33 @@ layer {
   }
 }
 layer {
+  name: "bn3_scale"
+  type: "Scale"
+  bottom: "bn3"
+  top: "bn3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
+  }
+}
+layer {
   bottom: "bn3"
   top: "bn3"
   name: "prelu2_1"
@@ -360,6 +441,33 @@ layer {
   }
   include {
     phase: TEST
+  }
+}
+layer {
+  name: "bn4_scale"
+  type: "Scale"
+  bottom: "bn4"
+  top: "bn4"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
   }
 }
 layer {
@@ -454,6 +562,33 @@ layer {
   }
 }
 layer {
+  name: "bn5_scale"
+  type: "Scale"
+  bottom: "bn5"
+  top: "bn5"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
+  }
+}
+layer {
   bottom: "bn5"
   top: "bn5"
   name: "prelu3_1"
@@ -531,6 +666,33 @@ layer {
   }
   include {
     phase: TEST
+  }
+}
+layer {
+  name: "bn6_scale"
+  type: "Scale"
+  bottom: "bn6"
+  top: "bn6"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
   }
 }
 layer {
@@ -614,6 +776,33 @@ layer {
   }
 }
 layer {
+  name: "bn7_scale"
+  type: "Scale"
+  bottom: "bn7"
+  top: "bn7"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
+  }
+}
+layer {
   bottom: "bn7"
   top: "bn7"
   name: "prelu3_3"
@@ -691,6 +880,33 @@ layer {
   }
   include {
     phase: TEST
+  }
+}
+layer {
+  name: "bn8_scale"
+  type: "Scale"
+  bottom: "bn8"
+  top: "bn8"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
   }
 }
 layer {
@@ -785,6 +1001,33 @@ layer {
   }
 }
 layer {
+  name: "bn9_scale"
+  type: "Scale"
+  bottom: "bn9"
+  top: "bn9"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
+  }
+}
+layer {
   bottom: "bn9"
   top: "bn9"
   name: "prelu4_1"
@@ -862,6 +1105,33 @@ layer {
   }
   include {
     phase: TEST
+  }
+}
+layer {
+  name: "bn10_scale"
+  type: "Scale"
+  bottom: "bn10"
+  top: "bn10"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
   }
 }
 layer {
@@ -945,6 +1215,33 @@ layer {
   }
 }
 layer {
+  name: "bn11_scale"
+  type: "Scale"
+  bottom: "bn11"
+  top: "bn11"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
+  }
+}
+layer {
   bottom: "bn11"
   top: "bn11"
   name: "prelu4_3"
@@ -1022,6 +1319,33 @@ layer {
   }
   include {
     phase: TEST
+  }
+}
+layer {
+  name: "bn12_scale"
+  type: "Scale"
+  bottom: "bn12"
+  top: "bn12"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
   }
 }
 layer {
@@ -1116,6 +1440,33 @@ layer {
   }
 }
 layer {
+  name: "bn13_scale"
+  type: "Scale"
+  bottom: "bn13"
+  top: "bn13"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
+  }
+}
+layer {
   bottom: "bn13"
   top: "bn13"
   name: "prelu5_1"
@@ -1193,6 +1544,33 @@ layer {
   }
   include {
     phase: TEST
+  }
+}
+layer {
+  name: "bn14_scale"
+  type: "Scale"
+  bottom: "bn14"
+  top: "bn14"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
   }
 }
 layer {
@@ -1277,6 +1655,33 @@ layer {
   }
 }
 layer {
+  name: "bn15_scale"
+  type: "Scale"
+  bottom: "bn15"
+  top: "bn15"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
+  }
+}
+layer {
   bottom: "bn15"
   top: "bn15"
   name: "prelu5_3"
@@ -1357,6 +1762,33 @@ layer {
   }
 }
 layer {
+  name: "bn16_scale"
+  type: "Scale"
+  bottom: "bn16"
+  top: "bn16"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    filler {
+      type: "constant"
+      value: 1.0000001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+    bias_term: true
+  }
+}
+layer {
   bottom: "bn16"
   top: "bn16"
   name: "prelu5_4"
@@ -1377,6 +1809,7 @@ layer {
     pool: MAX
     kernel_size: 2
     stride: 2
+    pad: 1
   }
 }
 layer {
