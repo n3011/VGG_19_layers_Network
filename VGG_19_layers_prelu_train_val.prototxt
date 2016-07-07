@@ -1,3 +1,9 @@
+#-----------------------------------------------#
+# Written by Mrinal Haloi, NTU Singapore
+# Implementation of VGG, "Very Deep Convolutional Networks for Large-Scale Image Recognition "
+# http://arxiv.org/abs/1409.1556v6
+#-----------------------------------------------#
+
 name: "VGG_ILSVRC_19_layer"
 layer {
   name: "data"
@@ -8,13 +14,13 @@ layer {
     phase: TRAIN
   }
  transform_param {
-    crop_size: 128
-    mean_file: "/home/haloi/Data/lmdb/Test_fold_is_0/mean.binaryproto"
+    crop_size: 224
+    mean_file: "path/to/mean.binaryproto"
     mirror: true
  }
  data_param {
-    source: "/home/haloi/Data/lmdb/Test_fold_is_0/age_train_lmdb"
-    batch_size: 32
+    source: "pth/to/train_lmdb"
+    batch_size: 64
     backend: LMDB
   }
 }
@@ -27,12 +33,12 @@ layer {
     phase: TEST
   }
  transform_param {
-    crop_size: 128
-    mean_file: "/home/haloi/Data/lmdb/Test_fold_is_0/mean.binaryproto"
+    crop_size: 224
+    mean_file: "path/to/mean.binaryproto"
     mirror: false
  }
  data_param {
-    source: "/home/haloi/Data/lmdb/Test_fold_is_0/age_val_lmdb"
+    source: "path/to/val_lmdb"
     batch_size: 50
     backend: LMDB
   }
@@ -55,7 +61,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -135,7 +141,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -226,7 +232,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -306,7 +312,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -397,7 +403,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -477,7 +483,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -557,7 +563,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -637,7 +643,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -728,7 +734,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -808,7 +814,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -888,7 +894,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -968,7 +974,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -1059,7 +1065,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -1139,7 +1145,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -1218,8 +1224,9 @@ layer {
     num_output: 512
     pad: 1
     kernel_size: 3
+    stride: 2
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -1299,7 +1306,7 @@ layer {
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -1388,7 +1395,7 @@ layer {
   inner_product_param {
     num_output: 4096
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -1433,7 +1440,7 @@ layer {
   inner_product_param {
     num_output: 4096
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
     bias_filler {
       type: "constant"
@@ -1476,9 +1483,9 @@ layer {
     decay_mult: 0
    }
   inner_product_param {
-    num_output: 8
+    num_output: 1000
     weight_filler {
-      type: "xavier"
+      type: "msra"
     }
      bias_filler {
       type: "constant"
@@ -1512,6 +1519,6 @@ layer {
   top: "accuracy@3"
   include: { phase: TEST }
   accuracy_param {
-    top_k: 3
+    top_k: 5
   }
 }
